@@ -1,7 +1,7 @@
-QuantMongoRouter_addroute:
+QuantUtilitiesMongoRouterBundle_admin_addroute:
   pattern: /route/add
   defaults: {_controller: QuantUtilitiesMongoRouterBundle:Admin:addRoute}
-QuantMongoRouter_createroute:
+QuantUtilitiesMongoRouterBundle_admin_createroute:
   pattern: /route/create
   defaults: {_controller: QuantUtilitiesMongoRouterBundle:Admin:createRoute}
   requirements: {_method: post}

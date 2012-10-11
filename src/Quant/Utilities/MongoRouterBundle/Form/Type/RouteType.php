@@ -4,11 +4,11 @@ namespace Quant\Utilities\MongoRouterBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
-
+use Symfony\Component\Form\FormBuilderInterface;
 class RouteType extends AbstractType
 {
 
-    public function buildForm(FormBuilder $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
         /*
          * @QUANT
@@ -22,8 +22,8 @@ class RouteType extends AbstractType
                 ->add('destinationAction', 'text')
                 ->add('destinationParameters', 'text')
                 ->add('priority', 'text')
-                ->add('postRequired', 'checkbox', array('label' => 'Is post required?', required => false))
-                ->add('active', 'checkbox', array('label' => 'Is this route active?', required => false));
+                ->add('postRequired', 'checkbox', array('label' => 'Is post required?'))
+                ->add('active', 'checkbox', array('label' => 'Is this route active?'));
     }
 
     public function getDefaultOptions(array $options)

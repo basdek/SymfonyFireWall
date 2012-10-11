@@ -10,14 +10,7 @@ class RouteType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        /*
-         * @QUANT
-         * @TODO : 
-         * 
-         * Parameters => please note that these should be used as if they were the parameters to pass to the controller (a.k.a. destination Parameters.)
-         * 
-         */
-        $builder->add('pattern', 'text')
+               $builder->add('pattern', 'text')
                 ->add('destinationController', 'text')
                 ->add('destinationAction', 'text')
                 ->add('destinationParameters', 'text')

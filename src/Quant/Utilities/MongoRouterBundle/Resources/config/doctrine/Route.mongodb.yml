@@ -1,0 +1,23 @@
+Quant\Utilities\MongoRouterBundle\Document\Route:
+  
+  fields:
+    id:
+      id: true
+    pattern: 
+      type: string
+    destinationParameters:
+      type: string
+    destinationController:
+      type: string
+    destinationAction:
+      type: string
+    priority: 
+      type: int
+    postRequired:
+      type: boolean
+      default: false
+    active:
+      type: boolean
+      default: true
+    
+    

@@ -1,0 +1,11 @@
+acme_store_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: AcmeStoreBundle:Default:index }
+
+acme_mongo:
+    pattern: /quant
+    defaults: { _controller: AcmeStoreBundle:Default:create }
+
+acme_mongo_view:
+    pattern: /viewquant/{id}
+    defaults: {_controller: AcmeStoreBundle:Default:show}

@@ -1,0 +1,14 @@
+QuantRouterAdmin:
+  resource: "@QuantUtilitiesMongoRouterBundle/Resources/config/admin_routing.yml"
+  prefix:   /qrouter
+
+     
+TestData:
+  pattern: /test/
+  defaults: {_controller: QuantUtilitiesMongoRouterBundle:Admin:qIns}
+
+QuantRouter:
+   pattern: /{path}
+   defaults: {_controller: QuantUtilitiesMongoRouterBundle:Resolve:resolve}
+   requirements:
+     path: ".+"

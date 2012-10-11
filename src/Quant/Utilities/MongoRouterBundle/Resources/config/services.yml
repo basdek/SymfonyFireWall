@@ -1,0 +1,7 @@
+parameters:
+#    quant_utilities_mongo_router.example.class: Quant\Utilities\MongoRouterBundle\Example
+
+services:
+#    quant_utilities_mongo_router.example:
+#        class: %quant_utilities_mongo_router.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

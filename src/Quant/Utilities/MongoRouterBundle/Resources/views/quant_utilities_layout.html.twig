@@ -3,14 +3,17 @@
     <head>
         {%block headers %}{%endblock%}
             <link rel="stylesheet" href="{{asset('')}}">
+            <link rel="stylesheet" href="{{asset('fe_frameworks/foundation/foundation.min.css')}}">
             <title>Dynamic Router - {%block title%}{%endblock%}</title>
         </head>
         <body>
-            <div id="container">
-                <header>
-
-                </header>
-
+            <div class="row">
+                <div class="four coloumns">
+                    Menu
+                </div>
+                <div class="eight columns">
+                    Content
+                </div>
             </div>
         </body>
     </html>

@@ -13,6 +13,7 @@ class AdminController extends Controller
     {
         $em = $this->get('doctrine_mongodb')->getManager();
         $routes = $em->getRepository('QuantUtilitiesMongoRouterBundle:Route')->findAll();
+        return $this->render('QuantUtilitiesMongoRouterBundle:Admin:index.html.twig', array('routes' => $routes));
     }
 
     public function addRouteAction()

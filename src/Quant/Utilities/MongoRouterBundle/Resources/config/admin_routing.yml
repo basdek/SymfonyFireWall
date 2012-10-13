@@ -1,3 +1,6 @@
+QuantUtilitiesMongoRouterBundle_admin_index:
+  pattern: /
+  defaults: {_controller: QuantUtilitiesMongoRouterBundle:Admin:index}
 QuantUtilitiesMongoRouterBundle_admin_addroute:
   pattern: /route/add
   defaults: {_controller: QuantUtilitiesMongoRouterBundle:Admin:addRoute}

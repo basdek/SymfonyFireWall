@@ -20,7 +20,8 @@ class AdminController extends Controller
 
     public function addRouteAction()
     {
-        $form = $this->createForm(new RouteType, new Route);
+        $route = new Route;
+        $form = $this->createForm(new RouteType, $route);
         return $this->render('QuantUtilitiesMongoRouterBundle:Admin:add.html.twig', array('form' => $form->createView()));
     }
 

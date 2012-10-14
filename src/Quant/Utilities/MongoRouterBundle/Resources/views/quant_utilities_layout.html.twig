@@ -2,20 +2,23 @@
 <html>
     <head>
         {%block headers %}{%endblock%}
-            <link rel="stylesheet" href="{{asset('/bundles/quantutilitiesmongorouter/css/quant_mongorouter.css')}}">
             <link rel="stylesheet" href="{{asset('/fe_frameworks/foundation/stylesheets/foundation.min.css')}}">
+            <link rel="stylesheet" href="{{asset('/bundles/quantutilitiesmongorouter/css/quant_mongorouter.css')}}">
+            <script src="{{ asset('/fe_frameworks/foundation/javascripts/foundation.min.js') }}"></script>
             <title>Dynamic Router - {%block title%}{%endblock%}</title>
         </head>
         <body>
             <div id="container">
                 <div class="row">
                     <div class="two columns">
-                        Menu
+                        Quant Components.
+                        {%block menu%}
+                        {%endblock%}
                     </div>
                     <div class="ten columns">
                         {%block body %}{%endblock%}
+                        </div>
                     </div>
                 </div>
-            </div>
-        </body>
-    </html>
+            </body>
+        </html>

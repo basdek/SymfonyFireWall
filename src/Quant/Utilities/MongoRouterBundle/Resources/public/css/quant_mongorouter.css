@@ -1,9 +1,27 @@
-#container
-{
-    margin: 20px;
-    background: #e5e5e5;
-}
-h1,h2,h3,h4,h5,h6
-{
-    font-weight:normal;
-}
+body {
+  background: #555; }
+
+#container {
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#efefef), to(#dddddd));
+  background: -moz-linear-gradient(top, #efefef, #dddddd);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#efefef', endColorstr='#dddddd');
+  margin: 30px; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  color: #de5b3a; }
+
+h2.subtitle {
+  font-size: 15px;
+  font-style: italic;
+  color: #5791ff; }
+
+nav#main ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px; }
+nav#main li a {
+  font-size: 12px; }

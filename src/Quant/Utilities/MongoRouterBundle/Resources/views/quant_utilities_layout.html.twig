@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="{{asset('/fe_frameworks/foundation/stylesheets/foundation.min.css')}}">
+        <link rel="stylesheet" href="{{asset('/bundles/quantutilitiesmongorouter/css/quant_mongorouter.css')}}">
+        <script src="{{ asset('/fe_frameworks/foundation/javascripts/foundation.min.js') }}"></script>
         {%block headers %}{%endblock%}
-            <link rel="stylesheet" href="{{asset('/fe_frameworks/foundation/stylesheets/foundation.min.css')}}">
-            <link rel="stylesheet" href="{{asset('/bundles/quantutilitiesmongorouter/css/quant_mongorouter.css')}}">
-            <script src="{{ asset('/fe_frameworks/foundation/javascripts/foundation.min.js') }}"></script>
-            <title>Dynamic Router - {%block title%}{%endblock%}</title>
-        </head>
-        <body>
-            <div id="container">
-                <div class="row">
-                    <div class="two columns">
-                        Quant Components.
+        <title>Dynamic Router - {%block title%}{%endblock%}</title>
+    </head>
+    <body>
+        <div class="row" id="container">
+            <div class="two columns">
+
                         {%block menu%}
                         {%endblock%}
-                    </div>
-                    <div class="ten columns">
+            </div>
+            <div class="ten columns">
                         {%block body %}{%endblock%}
-                        </div>
-                    </div>
                 </div>
-            </body>
-        </html>
+            </div>
+
+        </body>
+    </html>

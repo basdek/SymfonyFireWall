@@ -29,7 +29,7 @@
   
     $("#featured").orbit();
     
-    $('.accordion li', this).on('click.fndtn', function () 
+    $('button.delete', this).on('click.fndtn', function () 
     {
         window.alert('Hello');
         console.log('test');

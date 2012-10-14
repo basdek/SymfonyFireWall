@@ -1,5 +1,8 @@
 <?php
-
+/*
+ * @TODO: Make a name propery for link path twig purposes,
+ * or solve this in some way!!
+ */
 namespace Quant\Utilities\MongoRouterBundle\Document;
 
 class Route

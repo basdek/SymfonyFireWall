@@ -14,6 +14,7 @@ class AdminController extends Controller
         $em = $this->get('doctrine_mongodb')->getManager();
         $routes = $em->createQueryBuilder('QuantUtilitiesMongoRouterBundle:Route');
         $routes->sort('active', 'DESC');
+        $routes->sort('priority', 'ASC');
         return $this->render('QuantUtilitiesMongoRouterBundle:Admin:index.html.twig', array('routes' => $routes->getQuery()->execute()));
     }
 

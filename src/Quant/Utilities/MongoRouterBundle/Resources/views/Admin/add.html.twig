@@ -1,5 +1,15 @@
+{%extends 'QuantUtilitiesMongoRouterBundle::quant_utilities_layout.html.twig' %}
+{%block title %}
+Add a new route to database
+{%endblock%}
+{%block menu%}
+    {%include('QuantUtilitiesMongoRouterBundle::Admin/menu.html.twig')%}
+{%endblock%}
+{%block body%}
+<h1>New Route</h1>
 <form action="{{ path('QuantUtilitiesMongoRouterBundle_admin_createroute')}}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
 
-    <input type="submit" />
+    <input type="submit" class="button success medium" value="Add"/>
 </form>
+{%endblock%}

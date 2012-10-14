@@ -8,16 +8,28 @@ body {
   background: -webkit-gradient(linear, left top, left bottom, from(#efefef), to(#dddddd));
   background: -moz-linear-gradient(top, #efefef, #dddddd);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#efefef', endColorstr='#dddddd');
+  -webkit-box-shadow: 2px 5px 2px #666666;
+  -moz-box-shadow: 2px 5px 2px #666666;
+  box-shadow: 2px 5px 2px #666666;
   margin: 30px; }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
-  color: #de5b3a; }
+  color: #20b7dc;
+  font-family: "Helvetica Neue", Helvetica; }
+
+h3, h4, h5, h6 {
+  color: #2ba6cb; }
+
+h1.tiny {
+  text-transform: uppercase;
+  color: #2ba6cb;
+  font-size: 15px; }
 
 h2.subtitle {
   font-size: 15px;
   font-style: italic;
-  color: #5791ff; }
+  color: #2ba6cb; }
 
 nav#main ul {
   list-style: none;
@@ -25,3 +37,17 @@ nav#main ul {
   padding: 0px; }
 nav#main li a {
   font-size: 12px; }
+
+table#repository {
+  width: 100%; }
+
+.small, form label {
+  color: #383737;
+  font-size: 9px;
+  text-transform: uppercase; }
+
+.sub {
+  vertical-allign: top; }
+
+form {
+  width: 60%; }

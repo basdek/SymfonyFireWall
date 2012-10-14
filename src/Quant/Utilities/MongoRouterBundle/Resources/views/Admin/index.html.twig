@@ -3,18 +3,18 @@
 All the database routes
 {%endblock%}
 {%block menu%}
-    {%include('QuantUtilitiesMongoRouterBundle::Admin/admin_menu.html.twig')%}
+    {%include('QuantUtilitiesMongoRouterBundle::Admin/menu.html.twig')%}
 {%endblock%}
 {%block body%}
 <h1>All routes</h1>
-<h2 class="subtitle">(active &amp; passive, db defined)</h2> 
+<h2 class="subtitle">(active &amp; passive, db defined/uncached)</h2> 
 <table id="repository">
     <thead>
         <tr>
             <td>Priority</td>
-            <td>Post?</td>
-            <td>Active?</td>
-            <td>Pattern</td>
+            <td>Active</td>
+            <td>Pattern <span class="small">+ requirements</span></td>
+            <td>Destination</td>
             <td>Actions</td>
         </tr>
     </thead>
@@ -25,22 +25,37 @@ All the database routes
                {{route.priority}}
            </td>
            <td>
-               {{route.active}}
+               {%if route.active != 1%}
+                   <button class="tiny button success activate" data-id="{{route.id}}">Activate</button>
+               {%else%}
+                   Yes
+               {%endif%}
            </td>
-           <td>{{route.postRequired}}</td>
            <td>
                {{route.pattern}}
+               {%if route.postRequired == 1%}
+                <span class="small sup">[post]</span>
+               {%endif%}
            </td>
            <td>
-               <button class="tiny button alert">Delete</button>
-               <button class="tiny button secondary">Cache</button>
-               ?
+               {{route.destinationController}}
+               {{route.destinationAction}}
+               {{route.destinationParameters}}
+           </td>
+           <td>
+               <button class="tiny button alert delete" data-id="{{route.id}}" >Delete</button>
+               <button class="tiny button secondary cache" data-id="{{route.id}}">Cache</button>
            </td>
        </tr>
     {%endfor %}
     </tbody>
 </table>
+<div class="columns eight">
+<h1 class="tiny">What about caching?</h1>
+<p>If you cache a dynamic generated url it will be stored as a normal yaml routing file. This will provide improved speed (a yaml file 
+will load faster then even a database request). If a route is saved in a yaml file it will also be cached by Symfony's normal caching.</p>
+</div>
 {%endblock%}
 {%block headers %}
-<!-- for the delete model we will write some javascript -->
+<script src="{{asset('/bundles/quantutilitiesmongorouter/js/route_modals.js')}}"></script>
 {%endblock%}

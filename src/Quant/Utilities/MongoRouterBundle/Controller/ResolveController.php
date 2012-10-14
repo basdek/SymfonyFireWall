@@ -19,6 +19,11 @@ class ResolveController extends Controller
         $q->field('active')->notEqual('NO');
         $q->sort('priority', 'ASC');
         $this->available_database_routes = $q->getQuery()->execute();
+        
+        /*
+         * Deny requests that are not yet resolvable because the component is not yet finished.
+         */
+        return new \Symfony\Component\HttpFoundation\Response('QuantRouter temporary denied request.', 404);
     }
 
     private function parseMatchUrl()

@@ -2,17 +2,19 @@
 <html>
     <head>
         {%block headers %}{%endblock%}
-            <link rel="stylesheet" href="{{asset('')}}">
-            <link rel="stylesheet" href="{{asset('fe_frameworks/foundation/foundation.min.css')}}">
+            <link rel="stylesheet" href="{{asset('/bundles/quantutilitiesmongorouter/css/quant_mongorouter.css')}}">
+            <link rel="stylesheet" href="{{asset('/fe_frameworks/foundation/stylesheets/foundation.min.css')}}">
             <title>Dynamic Router - {%block title%}{%endblock%}</title>
         </head>
         <body>
-            <div class="row">
-                <div class="four coloumns">
-                    Menu
-                </div>
-                <div class="eight columns">
-                    Content
+            <div id="container">
+                <div class="row">
+                    <div class="two columns">
+                        Menu
+                    </div>
+                    <div class="ten columns">
+                        {%block body %}{%endblock%}
+                    </div>
                 </div>
             </div>
         </body>

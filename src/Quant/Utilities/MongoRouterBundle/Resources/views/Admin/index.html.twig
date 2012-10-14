@@ -1,7 +1,46 @@
 {%extends 'QuantUtilitiesMongoRouterBundle::quant_utilities_layout.html.twig' %}
 {%block title %}
-    All the database routes
+All the database routes
+{%endblock%}
+{%block menu%}
+    {%include('QuantUtilitiesMongoRouterBundle::Admin/admin_menu.html.twig')%}
 {%endblock%}
 {%block body%}
-    <h1>All active and deactivated routes defined in the database</h1>
+<h1>All routes</h1>
+<h2 class="subtitle">(active &amp; passive, db defined)</h2> 
+<table id="repository">
+    <thead>
+        <tr>
+            <td>Priority</td>
+            <td>Post?</td>
+            <td>Active?</td>
+            <td>Pattern</td>
+            <td>Actions</td>
+        </tr>
+    </thead>
+    <tbody>
+    {% for route in routes %}
+       <tr>
+           <td>
+               {{route.priority}}
+           </td>
+           <td>
+               {{route.active}}
+           </td>
+           <td>{{route.postRequired}}</td>
+           <td>
+               {{route.pattern}}
+           </td>
+           <td>
+               <button class="tiny button alert">Delete</button>
+               <button class="tiny button secondary">Cache</button>
+               ?
+           </td>
+       </tr>
+    {%endfor %}
+    </tbody>
+</table>
+{%endblock%}
+{%block headers %}
+<!-- for the delete model we will write some javascript -->
 {%endblock%}

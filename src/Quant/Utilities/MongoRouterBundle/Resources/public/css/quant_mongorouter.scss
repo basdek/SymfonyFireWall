@@ -1,103 +1,141 @@
 @mixin box-shadow($top, $left, $blur, $color, $inset: false) {
-  @if $inset {
-    -webkit-box-shadow:inset $top $left $blur $color;
-    -moz-box-shadow:inset $top $left $blur $color;
-    box-shadow:inset $top $left $blur $color;
-  } @else {
-    -webkit-box-shadow: $top $left $blur $color;
-    -moz-box-shadow: $top $left $blur $color;
-    box-shadow: $top $left $blur $color;
-  }
+    @if $inset {
+        -webkit-box-shadow:inset $top $left $blur $color;
+        -moz-box-shadow:inset $top $left $blur $color;
+        box-shadow:inset $top $left $blur $color;
+        } @else {
+        -webkit-box-shadow: $top $left $blur $color;
+        -moz-box-shadow: $top $left $blur $color;
+        box-shadow: $top $left $blur $color;
+    }
 }
 
 @mixin text-field {
- display: inline-block;
-  outline: none;
-  text-decoration: none;
-  font: 14px/100% Arial, Helvetica, sans-serif;
-  padding: .5em;
-  text-shadow: 0 1px 1px rgba(0,0,0,.3);
-  @include rounded();
-  @include box-shadow(0, 1px, 2px, rgba(0, 0, 0, 0.2));
+    display: inline-block;
+    outline: none;
+    text-decoration: none;
+    font: 14px/100% Arial, Helvetica, sans-serif;
+    padding: .5em;
+    text-shadow: 0 1px 1px rgba(0,0,0,.3);
+    @include rounded();
+    @include box-shadow(0, 1px, 2px, rgba(0, 0, 0, 0.2));
 }
 
 @mixin button($color: $red, $text_color: $white) {
-  display: inline-block;
-  outline: none;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  font: 14px/100% Arial, Helvetica, sans-serif;
-  padding: .5em 2em .55em;
-  text-shadow: 0 1px 1px rgba(0,0,0,.3);
-  @include rounded();
-  @include box-shadow(0, 1px, 2px, rgba(0, 0, 0, 0.2));
-
-  color: $text_color !important;
-  font-weight: bold;
-  border: solid 1px darken($color, 18%);
-  background: $color;
-  @include gradient(saturate($color, 15%), darken($color, 15%));
-
-  &:hover {
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
     text-decoration: none;
-    background: saturate($color, 10%);
-    @include gradient(saturate($color, 5%), darken($color, 5%));
-  }
-
-  &:active {
-    position: relative;
-    top: 1px;
-    color: saturate($color, 15%);
-    @include gradient(saturate($color, 15%), lighten($color, 15%));
-  }
+    font: 14px/100% Arial, Helvetica, sans-serif;
+    padding: .5em 2em .55em;
+    text-shadow: 0 1px 1px rgba(0,0,0,.3);
+    @include rounded();
+    @include box-shadow(0, 1px, 2px, rgba(0, 0, 0, 0.2));
+    
+    color: $text_color !important;
+    font-weight: bold;
+    border: solid 1px darken($color, 18%);
+    background: $color;
+    @include gradient(saturate($color, 15%), darken($color, 15%));
+    
+    &:hover {
+        text-decoration: none;
+        background: saturate($color, 10%);
+        @include gradient(saturate($color, 5%), darken($color, 5%));
+    }
+    
+    &:active {
+        position: relative;
+        top: 1px;
+        color: saturate($color, 15%);
+        @include gradient(saturate($color, 15%), lighten($color, 15%));
+    }
 }
 
 @mixin rounded($radius: 0.5em) {
-  -webkit-border-radius: $radius;
-  -moz-border-radius: $radius;
-  border-radius: $radius;
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
 }
 
 @mixin gradient($from, $to) {
-  background: -webkit-gradient(linear, left top, left bottom, from($from), to($to));
-  background: -moz-linear-gradient(top, $from, $to);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$from}', endColorstr='#{$to}');
+    background: -webkit-gradient(linear, left top, left bottom, from($from), to($to));
+    background: -moz-linear-gradient(top, $from, $to);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$from}', endColorstr='#{$to}');
 }
 body
 {
-  background: #555;
+    background: #555;
 }
-$primairycolor: #DE5b3a;
-$secondarycolor: #5791FF;
-
+$primairycolor: #20B7dc;
+$secondarycolor: #2BA6CB;
+$dark: #383737;
+$light: #383737;
 #container
 {
-  @include rounded(30px);
-  @include gradient(#efefef, #ddd);
-  margin: 30px;
+    @include rounded(30px);
+    @include gradient(#efefef, #ddd);
+    @include box-shadow(2px, 5px, 2px, #666);
+    margin: 30px;
 }
 h1, h2,h3,h4,h5,h6
 {
-  font-weight:normal;
-  color: $primairycolor;
+    font-weight: normal;
+    color: $primairycolor;
+    font-family: "Helvetica Neue", Helvetica;
+}
+h3,h4,h5,h6
+{
+    color:$secondarycolor;
+}
+h1.tiny
+{
+    text-transform: uppercase;
+    color: $secondarycolor;
+    font-size:15px;
 }
 h2.subtitle
 {
-  font-size:15px;
-  font-style: italic;
-  color: $secondarycolor;
+    font-size:15px;
+    font-style: italic;
+    color: $secondarycolor;
 }
 nav#main 
 {
-  ul
-  {
-    list-style:none;
-    margin:0px;
-    padding:0px;
-  }
-  li a
-  {
-    font-size:12px;
-  }
+    ul
+    {
+        list-style:none;
+        margin:0px;
+        padding:0px;
+    }
+    li a
+    {
+        font-size:12px;
+    }
+}
+table#repository
+{
+    width:100%;
+    thead tr td
+    {
+    }
+}
+.small
+{
+    color: $light;
+    font-size:9px;
+    text-transform: uppercase;
+}
+.sub
+{
+    vertical-allign:top;
+}
+form 
+{
+    width:60%;
+    label
+    {
+        @extend .small;
+    }
 }

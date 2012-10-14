@@ -10,13 +10,15 @@ class RouteType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-               $builder->add('priority', 'text')
+               $builder->add('priority', 'text', array('attr' => array('class' => 'two')))
                 ->add('pattern', 'text')
                 ->add('destinationController', 'text', array('label' => 'Destination'))
                 ->add('destinationAction', 'text', array('label' => 'Destination Action'))
                 ->add('destinationParameters', 'text', array ('label' => 'Parameters'))
-                ->add('postRequired', 'checkbox', array('label' => 'Is post required?'))
-                ->add('active', 'checkbox', array('label' => 'Is this route active?'));
+                ->add('postRequired', 'checkbox', array('label' => '[POST] required', 'required' => false))
+                ->add('active', 'checkbox', array('label' => 'Active', 'required' => false, 'property_path' => false));
+               
+               $builder->get('active')->setData(true);
     }
 
     public function getDefaultOptions(array $options)

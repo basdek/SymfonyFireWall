@@ -9,6 +9,24 @@ use Quant\Utilities\MongoRouterBundle\Form\Type\RouteType;
 class AdminController extends Controller
 {
 
+    //    public function qInsAction()
+//    {
+//        $em = $this->get('doctrine_mongodb')->getManager();
+//
+//        for ($i = 10; $i < 11; $i++)
+//        {
+//            $r = new Route();
+//
+//            $r->setDestinationController('MongoRouterBundle/AdminController');
+//            $r->setDestinationAction('index');
+//            $r->setPattern('/rtest' . $i);
+//            $r->setPriority($i);
+//            $r->setPostRequired(true);
+//            $r->setActive(false);
+//            $em->persist($r);
+//            $em->flush();
+//        }
+//    }
     public function indexAction()
     {
         $em = $this->get('doctrine_mongodb')->getManager();

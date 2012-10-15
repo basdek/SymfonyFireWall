@@ -58,7 +58,24 @@ class AdminController extends Controller
     }
     public function deleteRouteAction($id)
     {
-       
+        /*
+         * @TODO: make an undo function.
+         */
+       $em = $this->get('doctrine_mongodb')->getManager();
+       $route = $em->getRepository('QuantUtilitiesMongoRouterBundle:Route')->find($id);
+       if(!$route)
+       {
+           $answer = 'Error (not found entity).';
+       }
+       else
+       {
+           $em->remove($route);
+           $em->flush();
+           $answer = 'Deleted succesfully.';
+       }
+       $response = new \Symfony\Component\HttpFoundation\Response(json_encode(array('answer' => $answer)));
+       $response->headers->set('Content-Type', 'application/json');
+       return $response;
     }
 
 }

@@ -8,4 +8,6 @@ QuantUtilitiesMongoRouterBundle_admin_createroute:
   pattern: /route/create
   defaults: {_controller: QuantUtilitiesMongoRouterBundle:Admin:createRoute}
   requirements: {_method: post}
-  
+QuantUtilitiesMongoRouterBundle_admin_delete:
+  pattern:  /route/{id}/truncate
+  defaults: {_controller: QuantUtilitiesMongoRouterBundle:Admin:deleteRoute}

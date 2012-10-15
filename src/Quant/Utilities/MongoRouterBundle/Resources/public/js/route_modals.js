@@ -28,16 +28,28 @@
   
     
     $("#featured").orbit();
-    
+    /*
+    @TODO: something smart for the url on line 46.
+    */
     $(window).load(function(){
-        /*
-         * @QUANT: WORKING!
-         */
-        $('button.delete').click(function(){
-            $('#modal_placeholder').append('<div id="myModal" class="reveal-modal"><h1>Are you sure?</h1><p>This action will be permanent!</p></div>');
-            $('#myModal').reveal();
-        })
         
+        $('button.delete').click(function(){
+            $('#modal_placeholder').append('<div id="deleteModal" class="reveal-modal"><h1>Are you sure?</h1>'
+                +'<p>This action will be permanent, and can cause errors in your application.</p>'
+                +'<button class="tiny button alert delete-confirm" data-id="'+$(this).data('id')+'">Delete</button>'
+                +'<a class="close-reveal-modal">&#215;</a>');
+            $('#deleteModal').reveal({
+                closeOnBackgroundClick:false
+            })
+            $('button.delete-confirm').click(function(){
+                $.ajax({
+                  url:'/qrouter/route/'+$(this).data('id')+'/truncate'
+                }).done(function(){
+
+                })
+            })
+
+        })
     })
    
   // UNCOMMENT THE LINE YOU WANT BELOW IF YOU WANT IE8 SUPPORT AND ARE USING .block-grids

@@ -45,12 +45,21 @@ class AdminController extends Controller
 
     public function createRouteAction()
     {
-        
+        $em = $this->get('doctrine_mongodb')->getManager();
+        $form = $this->createForm(new RouteType, new Route);
+        $form->bindRequest($this->getRequest());
+        if ($form->isValid()) 
+        {
+            $newroute = $form->getData();
+            $em->persist($newroute);
+            $em->flush();
+        }
+        //return $this->redirect;
     }
 
     public function deleteRouteAction($id)
     {
-        
+       
     }
 
 }

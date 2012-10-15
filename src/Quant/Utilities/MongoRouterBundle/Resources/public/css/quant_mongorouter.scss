@@ -74,6 +74,10 @@ $dark: #383737;
 $light: #383737;
 #container
 {
+    margin:auto;
+}
+#box
+{
     @include rounded(30px);
     @include gradient(#efefef, #ddd);
     @include box-shadow(2px, 5px, 2px, #666);
@@ -137,5 +141,13 @@ form
     label
     {
         @extend .small;
+    }
+}
+.reveal-modal
+{
+    h1
+    {
+        color:$dark;
+        font-size:20px;
     }
 }

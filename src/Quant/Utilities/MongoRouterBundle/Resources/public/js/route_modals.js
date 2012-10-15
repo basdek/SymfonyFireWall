@@ -32,7 +32,6 @@
     @TODO: something smart for the url on line 46.
     */
     $(window).load(function(){
-        
         $('button.delete').click(function(){
             $('#modal_placeholder').append('<div id="deleteModal" class="reveal-modal"><h1>Are you sure?</h1>'
                 +'<p>This action will be permanent, and can cause errors in your application.</p>'
@@ -43,9 +42,15 @@
             })
             $('button.delete-confirm').click(function(){
                 $.ajax({
-                  url:'/qrouter/route/'+$(this).data('id')+'/truncate'
+                  id = function() { return $(this).data('id') };
+                  url:'/qrouter/route/'+id()+'/truncate'
                 }).done(function(){
-
+                  /*
+                  @TODO: if succesfull or else error, blah blah.
+                  */
+                  // assume a correct answer
+                  $('#deleteModal').trigger('reveal:close');
+                  console.log('tr[data-id="'+id()+'"]');
                 })
             })
 

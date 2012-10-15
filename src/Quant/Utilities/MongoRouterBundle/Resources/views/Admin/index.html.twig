@@ -21,7 +21,7 @@ All the database routes
     </thead>
     <tbody>
     {% for route in routes %}
-       <tr>
+       <tr data-id="{{route.id}}">
            <td>
                {{route.priority}}
            </td>

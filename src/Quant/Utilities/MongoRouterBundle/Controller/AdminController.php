@@ -56,7 +56,10 @@ class AdminController extends Controller
         }
         //return $this->redirect;
     }
-
+    public function deleteRouteModalAction($id)
+    {
+        
+    }
     public function deleteRouteAction($id)
     {
        

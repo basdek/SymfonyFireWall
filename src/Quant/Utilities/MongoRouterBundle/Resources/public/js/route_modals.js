@@ -34,7 +34,8 @@
          * @QUANT: WORKING!
          */
         $('button.delete').click(function(){
-            console.log('test')
+            $('#modal_placeholder').append('<div id="myModal" class="reveal-modal"><h1>Are you sure?</h1><p>This action will be permanent!</p></div>');
+            $('#myModal').reveal();
         })
         
     })

@@ -40,17 +40,14 @@
             $('#deleteModal').reveal({
                 closeOnBackgroundClick:false
             })
-            $('button.delete-confirm').click(function(){
+            $('button.delete-confirm').click(function(id){
+                id = $(this).data('id');
                 $.ajax({
-                  id = function() { return $(this).data('id') };
-                  url:'/qrouter/route/'+id()+'/truncate'
-                }).done(function(){
-                  /*
-                  @TODO: if succesfull or else error, blah blah.
-                  */
-                  // assume a correct answer
+                  url:'/qrouter/route/'+id+'/truncate',
+                }).done(function(data){
+                  console.log(data);
                   $('#deleteModal').trigger('reveal:close');
-                  console.log('tr[data-id="'+id()+'"]');
+                  $('tr[data-id="'+id+'"]').remove();
                 })
             })
 

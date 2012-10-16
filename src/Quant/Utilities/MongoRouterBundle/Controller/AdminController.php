@@ -66,11 +66,18 @@ class AdminController extends Controller
        if(!$route)
        {
            $answer = 'Error (not found entity).';
+           /*
+            * debug purposes
+            * @DEPLOY
+            * @TODO
+            * remove
+            */
+           throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
        }
        else
        {
-           //$em->remove($route);
-           //$em->flush();
+           $em->remove($route);
+           $em->flush();
            $answer = 'Deleted succesfully.';
        }
        $response = new \Symfony\Component\HttpFoundation\Response(json_encode(array('answer' => $answer)));

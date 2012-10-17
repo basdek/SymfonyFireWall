@@ -1,4 +1,9 @@
 
+
+testdateroutes:
+    pattern: /qrouter/test
+    defaults: {_controller: "QuantUtilitiesMongoRouterBundle:Admin:qIns"}
+
 _demo_secured:
     resource: "@AcmeDemoBundle/Controller/SecuredController.php"
     type:     annotation

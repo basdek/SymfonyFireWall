@@ -9,24 +9,22 @@ use Quant\Utilities\MongoRouterBundle\Form\Type\RouteType;
 class AdminController extends Controller
 {
 
-    //    public function qInsAction()
-//    {
-//        $em = $this->get('doctrine_mongodb')->getManager();
-//
-//        for ($i = 10; $i < 11; $i++)
-//        {
-//            $r = new Route();
-//
-//            $r->setDestinationController('MongoRouterBundle/AdminController');
-//            $r->setDestinationAction('index');
-//            $r->setPattern('/rtest' . $i);
-//            $r->setPriority($i);
-//            $r->setPostRequired(true);
-//            $r->setActive(false);
-//            $em->persist($r);
-//            $em->flush();
-//        }
-//    }
+    public function qInsAction()
+    {
+        $em = $this->get('doctrine_mongodb')->getManager();
+
+        for ($i = 1; $i < 850; $i++)
+        {
+            $r = new Route();
+            $r->setDestinationController('MongoRouterBundle/AdminController');
+            $r->setDestinationAction('index');
+            $r->setPattern('/rtest' . $i);
+            $r->setPriority($i);
+            $em->persist($r);
+            $em->flush();
+        }
+    }
+
     public function indexAction()
     {
         $em = $this->get('doctrine_mongodb')->getManager();
@@ -48,7 +46,7 @@ class AdminController extends Controller
         $em = $this->get('doctrine_mongodb')->getManager();
         $form = $this->createForm(new RouteType, new Route);
         $form->bindRequest($this->getRequest());
-        if ($form->isValid()) 
+        if ($form->isValid())
         {
             $newroute = $form->getData();
             $em->persist($newroute);
@@ -56,33 +54,34 @@ class AdminController extends Controller
         }
         //return $this->redirect;
     }
+
     public function deleteRouteAction($id)
     {
         /*
          * @TODO: make an undo function.
          */
-       $em = $this->get('doctrine_mongodb')->getManager();
-       $route = $em->getRepository('QuantUtilitiesMongoRouterBundle:Route')->find($id);
-       if(!$route)
-       {
-           $answer = 'Error (not found entity).';
-           /*
-            * debug purposes
-            * @DEPLOY
-            * @TODO
-            * remove
-            */
-           throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
-       }
-       else
-       {
-           $em->remove($route);
-           $em->flush();
-           $answer = 'Deleted succesfully.';
-       }
-       $response = new \Symfony\Component\HttpFoundation\Response(json_encode(array('answer' => $answer)));
-       $response->headers->set('Content-Type', 'application/json');
-       return $response;
+        $em = $this->get('doctrine_mongodb')->getManager();
+        $route = $em->getRepository('QuantUtilitiesMongoRouterBundle:Route')->find($id);
+        if (!$route)
+        {
+            $answer = 'Error (not found entity).';
+            /*
+             * debug purposes
+             * @DEPLOY
+             * @TODO
+             * remove
+             */
+            $answer = '404 error. Entity does not exist';
+            //  throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
+        } else
+        {
+            $em->remove($route);
+            $em->flush();
+            $answer = 'Deleted succesfully.';
+        }
+        $response = new \Symfony\Component\HttpFoundation\Response(json_encode(array('answer' => $answer)));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
     }
 
 }

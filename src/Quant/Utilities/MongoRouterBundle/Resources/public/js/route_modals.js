@@ -32,6 +32,11 @@
     @TODO: something smart for the url on line 46.
     */
     $(window).load(function(){
+
+
+        $(document).foundationAlerts();
+
+
         $('button.delete').click(function(){
             $('#modal_placeholder').append('<div id="deleteModal" class="reveal-modal"><h1>Are you sure?</h1>'
                 +'<p>This action will be permanent, and can cause errors in your application.</p>'
@@ -43,11 +48,14 @@
             $('button.delete-confirm').click(function(id){
                 id = $(this).data('id');
                 $.ajax({
-                  url:'/qrouter/route/'+id+'/truncate',
-                }).done(function(data){
-                  console.log(data);
+                  url:'/qrouter/route/'+id+'/truncate'
+                }).done(function(data, answerobject){
+               
+                  $('#alert_placeholder').append('<div id="alert-box success">Route deleted.</div>');
                   $('#deleteModal').trigger('reveal:close');
                   $('tr[data-id="'+id+'"]').remove();
+                  // now remove the dialog and reset the data-id element:
+                  $('#modal_placeholder #deleteModal').remove();
                 })
             })
 

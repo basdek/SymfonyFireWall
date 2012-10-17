@@ -9,6 +9,7 @@ All the database routes
 <h1>All routes</h1>
 <h2 class="subtitle">(active &amp; passive, db defined/uncached)</h2> 
 <div id="modal_placeholder" style="display:hidden"></div>
+<div id="allert_placeholder"></div>
 <table id="repository">
     <thead>
         <tr>
@@ -26,7 +27,8 @@ All the database routes
                {{route.priority}}
            </td>
            <td>
-               {%if route.active != 1%}
+               {{route.active}}
+               {%if route.active != 1 and route.active is defined%}
                    <button class="tiny button success activate" data-id="{{route.id}}">Activate</button>
                {%else%}
                    Yes

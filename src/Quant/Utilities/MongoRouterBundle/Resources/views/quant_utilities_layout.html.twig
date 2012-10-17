@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="{{asset('/fe_frameworks/foundation/stylesheets/foundation.min.css')}}">
-        <link rel="stylesheet" href="{{asset('/bundles/quantutilitiesmongorouter/css/quant_mongorouter.css')}}">
+        
         <script src="{{ asset('/fe_frameworks/foundation/javascripts/foundation.min.js') }}"></script>
-        {%block headers %}{%endblock%}
+        {% javascripts '@QuantUtilitiesMongoRouterBundle/Resources/public/js/*' filter='yui_js' output='js/compiled/mongorouter.js'%}
+                <script type="text/javascript" src="{{ asset_url }}"></script>
+        {%endjavascripts%}
+        
+        
+        <link rel="stylesheet" href="{{asset('/fe_frameworks/foundation/stylesheets/foundation.min.css')}}">
+        {% stylesheets '@QuantUtilitiesMongoRouterBundle/Resources/public/css/*' filter='yui_css' output='css/compiled/mongorouter.css'%}
+                <link rel="stylesheet" href="{{ asset_url }}" />
+        {%endstylesheets%}
         <title>Dynamic Router - {%block title%}{%endblock%}</title>
     </head>
     <body>
         <div id="container" class="row">
-        <div class="row" id="box">
-            <div class="two columns">
+            <div class="row" id="box">
+                <div class="two columns">
 
                         {%block menu%}
                         {%endblock%}
-            </div>
-            <div class="ten columns">
-                        {%block body %}{%endblock%}
                 </div>
+                <div class="ten columns">
+                        {%block body %}{%endblock%}
+                    </div>
+                </div>
+
             </div>
-                
-        </div>
         </body>
     </html>

@@ -38,6 +38,7 @@
 
 
         $('button.delete').click(function(){
+            $.fn.clean();
             $('#modal_placeholder').append('<div id="deleteModal" class="reveal-modal"><h1>Are you sure?</h1>'
                 +'<p>This action will be permanent, and can cause errors in your application.</p>'
                 +'<button class="tiny button alert delete-confirm" data-id="'+$(this).data('id')+'">Delete</button>'
@@ -55,11 +56,21 @@
                   $('#deleteModal').trigger('reveal:close');
                   $('tr[data-id="'+id+'"]').remove();
                   // now remove the dialog and reset the data-id element:
-                  $('#modal_placeholder #deleteModal').remove();
+                  $.fn.clean();
                 })
             })
-
         })
+
+        $('button.activate').click(function(){
+          //$('#modal_placeholder').append
+          console.log('activate');
+        })
+
+        $.fn.clean = function()
+        {
+           $('#modal_placeholder .reveal-modal').remove();
+           $('#modal_placeholder .reveal-modal-bg').remove();
+        }
     })
    
   // UNCOMMENT THE LINE YOU WANT BELOW IF YOU WANT IE8 SUPPORT AND ARE USING .block-grids

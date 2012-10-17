@@ -52,7 +52,7 @@
                   url:'/qrouter/route/'+id+'/truncate'
                 }).done(function(data, answerobject){
                
-                  $('#alert_placeholder').append('<div id="alert-box success">Route deleted.</div>');
+                  $('#alert_placeholder').append('<div class="alert-box success">Route deleted.</div>');
                   $('#deleteModal').trigger('reveal:close');
                   $('tr[data-id="'+id+'"]').remove();
                   // now remove the dialog and reset the data-id element:

@@ -1,3 +1,5 @@
+web/js/compiled/*
+web/css/compiled/*
 web/bundles/*
 app/bootstrap.php.cache
 app/cache/*

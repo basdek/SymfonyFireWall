@@ -11,6 +11,7 @@ class RouteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
                $builder->add('priority', 'text', array('attr' => array('class' => 'two')))
+                ->add('name', 'text')
                 ->add('pattern', 'text')
                 ->add('destinationController', 'text', array('label' => 'Destination'))
                 ->add('destinationAction', 'text', array('label' => 'Destination Action'))

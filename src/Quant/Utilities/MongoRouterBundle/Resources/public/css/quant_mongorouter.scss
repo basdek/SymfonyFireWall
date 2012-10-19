@@ -66,47 +66,47 @@
 }
 body
 {
-    background: #555;
+    @include gradient(#dfdfdf, #ccc);    
 }
-$primairycolor: #20B7dc;
-$secondarycolor: #2BA6CB;
 $dark: #383737;
-$light: #383737;
+$light: #505050;
 #container
 {
     margin:auto;
+    background: none;
 }
 #box
 {
-    @include rounded(30px);
-    @include gradient(#efefef, #ddd);
-    @include box-shadow(2px, 5px, 2px, #666);
+    @include rounded(15px);
+    background: #efefef;
+    border: 1px #111;
     margin: 30px;
 }
 h1, h2,h3,h4,h5,h6
 {
     font-weight: normal;
-    color: $primairycolor;
+    color: $dark;
     font-family: "Helvetica Neue", Helvetica;
 }
 h3,h4,h5,h6
 {
-    color:$secondarycolor;
+    color:$dark;
 }
 h1.tiny
 {
     text-transform: uppercase;
-    color: $secondarycolor;
+    color: $light;
     font-size:15px;
 }
 h2.subtitle
 {
     font-size:15px;
     font-style: italic;
-    color: $secondarycolor;
+    color: $light;
 }
 nav#main 
 {
+    margin-top:100px;
     ul
     {
         list-style:none;
@@ -121,8 +121,14 @@ nav#main
 table#repository
 {
     width:100%;
+    border: none;
+    background: none;
     thead tr td
     {
+    }
+    tbody td
+    {
+        font-size:12px;
     }
 }
 .small
@@ -150,4 +156,30 @@ form
         color:$dark;
         font-size:20px;
     }
+}
+.button.success, .button.alert, .button.secondary
+{
+    border:none;
+}
+table#repository
+{
+    thead
+    {
+        @include gradient(#454545,#565656);
+        color:#fff;
+        font-weight: bold;
+        border: none;
+        tr, td
+        {
+            height:40px;
+        }
+        td
+        {
+            padding:5px;
+        }
+    }
+}
+.alert-box .informative
+{
+    background:#F89406;
 }

@@ -7,6 +7,7 @@ Add a new route to database
 {%endblock%}
 {%block body%}
 <h1>New Route</h1>
+<h2 class="subtitle">Add a route to the database here</h2>
 <form action="{{ path('QuantUtilitiesMongoRouterBundle_admin_createroute')}}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
 

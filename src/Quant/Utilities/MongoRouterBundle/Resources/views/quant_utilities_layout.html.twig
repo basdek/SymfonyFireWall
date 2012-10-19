@@ -9,7 +9,7 @@
         
         
         <link rel="stylesheet" href="{{asset('/fe_frameworks/foundation/stylesheets/foundation.min.css')}}">
-        {% stylesheets '@QuantUtilitiesMongoRouterBundle/Resources/public/css/*' filter='yui_css' output='css/compiled/mongorouter.css'%}
+        {% stylesheets '@QuantUtilitiesMongoRouterBundle/Resources/public/css/*.css' filter='yui_css' output='css/compiled/mongorouter.css'%}
                 <link rel="stylesheet" href="{{ asset_url }}" />
         {%endstylesheets%}
         <title>Dynamic Router - {%block title%}{%endblock%}</title>
@@ -28,5 +28,6 @@
                 </div>
 
             </div>
+            <script src"{{asset('fe_frameworks/foundation/javascripts/jquery.foundation.alerts.js')}}"></script>
         </body>
     </html>

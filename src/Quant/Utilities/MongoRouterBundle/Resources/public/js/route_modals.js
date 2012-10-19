@@ -4,8 +4,9 @@
   var $doc = $(document),
       Modernizr = window.Modernizr;
 
-  
-  $.fn.foundationAlerts           ? $doc.foundationAlerts() : null;
+ $(document).foundationAlerts();
+
+  //$.fn.foundationAlerts           ? $doc.foundationAlerts() : null;
   $.fn.foundationAccordion        ? $doc.foundationAccordion() : null;
   $.fn.foundationTooltips         ? $doc.foundationTooltips() : null;
   $('input, textarea').placeholder();
@@ -34,7 +35,6 @@
     $(window).load(function(){
 
 
-        $(document).foundationAlerts();
 
 
         $('button.delete').click(function(){
@@ -50,26 +50,49 @@
                 id = $(this).data('id');
                 $.ajax({
                   url:'/qrouter/route/'+id+'/truncate'
-                }).done(function(data, answerobject){
-               
-                  $('#alert_placeholder').append('<div class="alert-box success">Route deleted.</div>');
+                }).done(function(data, answerobject){               
                   $('#deleteModal').trigger('reveal:close');
                   $('tr[data-id="'+id+'"]').remove();
-                  // now remove the dialog and reset the data-id element:
                   $.fn.clean();
+                  $('#alert_placeholder').append('<div id="delete-success-'+id+'" class="alert-box six columns">Route deleted.  <a href="" class="close">&times;</a></div>');
+                  $('#delete-success-'+id).fadeOut(2400, function(){
+                    $('#delete-success-'+id).remove();
+                  })
                 })
             })
         })
 
         $('button.activate').click(function(){
-          //$('#modal_placeholder').append
-          console.log('activate');
+            $.fn.clean();
+            $('#modal_placeholder').append('<div id="activateModal" class="reveal-modal"><h1>Activate this route?</h1><p>Activating this route will make it available and will probably interfere with your current priority settings.</p>'+
+            '<button class="tiny button success activate-confirm" data-id="'+$(this).data('id')+'">Ok</button><a class="close-reveal-modal">&#215;</a></div>');
+            $('#activateModal').reveal({
+                closeOnBackGroundClick:false
+            })
+            $('button.activate-confirm').click(function(id){
+                id = $(this).data('id');
+                $.ajax({
+                    url: '/qrouter/route/'+id+'/activate'
+                }).done(function(){
+                  $('#activateModal').trigger('reveal:close');
+                  $('tr[data-id="'+id+'"] button.activate').remove();
+                  $('tr[data-id="'+id+'"] td.active').append('TRUE');
+                  $.fn.clean();
+                  $('#alert_placeholder').append('<div id="activate-success-'+id+'" class="alert-box six columns">Route activated succesfully.<a href="" class="close">&times;</a></div>')
+                  $('#activate-success-'+id).fadeOut(2400, function(){
+                    $('#activate-success-'+id).remove();
+                  })
+                })
+            })
         })
+
+        
 
         $.fn.clean = function()
         {
            $('#modal_placeholder .reveal-modal').remove();
            $('#modal_placeholder .reveal-modal-bg').remove();
+           $('#alert_placeholder .alert-box').remove();
         }
     })
    

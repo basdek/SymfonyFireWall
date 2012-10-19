@@ -14,6 +14,7 @@ All the database routes
     <thead>
         <tr>
             <td>Priority</td>
+            <td>Name</td>
             <td>Active</td>
             <td>Pattern <span class="small">+ requirements</span></td>
             <td>Destination</td>
@@ -27,11 +28,13 @@ All the database routes
                {{route.priority}}
            </td>
            <td>
-               {{route.active}}
+               {{route.name}}
+           </td>
+           <td class="active">
                {%if route.active != 1 and route.active is defined%}
                    <button class="tiny button success activate" data-id="{{route.id}}">Activate</button>
                {%else%}
-                   Yes
+                   TRUE
                {%endif%}
            </td>
            <td>
@@ -50,10 +53,15 @@ All the database routes
                <button class="tiny button secondary cache" data-id="{{route.id}}">Cache</button>
            </td>
        </tr>
+       {%else%}
+       <tr>
+           <td colspan="6">No routes were found in the database.</td>
+       </tr>
     {%endfor %}
+ 
     </tbody>
 </table>
-<div class="columns eight">
+<div class="columns eight" style="padding-left:0px;">
 <h1 class="tiny">What about caching?</h1>
 <p>If you cache a dynamic generated url it will be stored as a normal yaml routing file. This will provide improved speed (a yaml file 
 will load faster then even a database request). If a route is saved in a yaml file it will also be cached by Symfony's normal caching.</p>

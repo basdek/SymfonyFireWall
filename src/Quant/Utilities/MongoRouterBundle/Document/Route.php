@@ -14,7 +14,7 @@ class Route
     protected $priority;
     protected $postRequired;
     protected $active;
-    
+    protected $name;
     /**
      * @var MongoId $id
      */
@@ -183,5 +183,27 @@ class Route
     public function getActive()
     {
         return $this->active;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Route
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string $name
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 }

@@ -19,5 +19,6 @@ Quant\Utilities\MongoRouterBundle\Document\Route:
     active:
       type: boolean
       default: true
-    
+    name:
+      type: string
     

@@ -11,3 +11,6 @@ QuantUtilitiesMongoRouterBundle_admin_createroute:
 QuantUtilitiesMongoRouterBundle_admin_delete:
   pattern:  /route/{id}/truncate
   defaults: {_controller: QuantUtilitiesMongoRouterBundle:Admin:deleteRoute}
+QuantUtilitiesMongoRouterBundle_admin_activate:
+  pattern: /route/{id}/activate
+  defaults: {_controller: QuantUtilitiesMongoRouterBundle:Admin:activateRoute}

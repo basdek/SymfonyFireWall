@@ -5,7 +5,7 @@ namespace Quant\Utilities\MongoRouterBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Quant\Utilities\MongoRouterBundle\Document\Route;
 use Quant\Utilities\MongoRouterBundle\Form\Type\RouteType;
-
+use Symfony\Component\HttpFoundation\Response;
 class AdminController extends Controller
 {
 
@@ -13,9 +13,10 @@ class AdminController extends Controller
     {
         $em = $this->get('doctrine_mongodb')->getManager();
 
-        for ($i = 1; $i < 850; $i++)
+        for ($i = 1; $i < 25; $i++)
         {
             $r = new Route();
+            $r->setName('name'.$i);
             $r->setDestinationController('MongoRouterBundle/AdminController');
             $r->setDestinationAction('index');
             $r->setPattern('/rtest' . $i);
@@ -64,22 +65,35 @@ class AdminController extends Controller
         $route = $em->getRepository('QuantUtilitiesMongoRouterBundle:Route')->find($id);
         if (!$route)
         {
-            $answer = 'Error (not found entity).';
-            /*
-             * debug purposes
-             * @DEPLOY
-             * @TODO
-             * remove
-             */
             $answer = '404 error. Entity does not exist';
-            //  throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
-        } else
+        } 
+        else
         {
             $em->remove($route);
             $em->flush();
-            $answer = 'Deleted succesfully.';
+            $answer = 'Success';
         }
-        $response = new \Symfony\Component\HttpFoundation\Response(json_encode(array('answer' => $answer)));
+        $response = new Response(json_encode(array('answer' => $answer)));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+    }
+    
+    public function activateRouteAction($id)
+    {
+        $em = $this->get('doctrine_mongodb')->getManager();
+        $route = $em->getRepository('QuantUtilitiesMongoRouterBundle:Route')->find($id);
+        if (!$route)
+        {
+            $answer = '404 error. Entity does not exist';
+        } 
+        else
+        {
+            $route->setActive(true);
+            $em->persist($route);
+            $em->flush();
+            $answer = 'Success';
+        }   
+        $response = Response(json_encode(array('answer' => $answer)));
         $response->headers->set('Content-Type', 'application/json');
         return $response;
     }

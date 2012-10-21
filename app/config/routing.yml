@@ -5,7 +5,11 @@ home:
 # test:
 #   pattern: /{something}/hello
 #   defaults: {_controller: QuantUtilitiesMongoRouterBundle:Admin:index}
-  
+
+#quant_utilities_mongorouter_cached:
+#    prefix: /
+#    resource: ""
+
 quant_utilities_mongo_router:
     resource: "@QuantUtilitiesMongoRouterBundle/Resources/config/routing.yml"
     prefix:   /

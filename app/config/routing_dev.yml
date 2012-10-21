@@ -1,5 +1,4 @@
 
-
 testdateroutes:
     pattern: /qrouter/test
     defaults: {_controller: "QuantUtilitiesMongoRouterBundle:Admin:qIns"}

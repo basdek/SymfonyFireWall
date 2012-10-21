@@ -47,61 +47,57 @@ h2.subtitle {
   color: #505050;
 }
 
-/* line 108, quant_mongorouter.scss */
-nav#main {
-  margin-top: 100px;
-}
-/* line 111, quant_mongorouter.scss */
+/* line 110, quant_mongorouter.scss */
 nav#main ul {
   list-style: none;
   margin: 0px;
   padding: 0px;
 }
-/* line 117, quant_mongorouter.scss */
+/* line 116, quant_mongorouter.scss */
 nav#main li a {
   font-size: 12px;
 }
 
-/* line 122, quant_mongorouter.scss */
+/* line 121, quant_mongorouter.scss */
 table#repository {
   width: 100%;
   border: none;
-  background: none;
+  background: #fefefe;
 }
-/* line 130, quant_mongorouter.scss */
+/* line 129, quant_mongorouter.scss */
 table#repository tbody td {
   font-size: 12px;
 }
 
-/* line 135, quant_mongorouter.scss */
+/* line 134, quant_mongorouter.scss */
 .small, form label {
   color: #505050;
   font-size: 9px;
   text-transform: uppercase;
 }
 
-/* line 141, quant_mongorouter.scss */
+/* line 140, quant_mongorouter.scss */
 .sub {
   vertical-allign: top;
 }
 
-/* line 145, quant_mongorouter.scss */
+/* line 144, quant_mongorouter.scss */
 form {
   width: 60%;
 }
 
-/* line 155, quant_mongorouter.scss */
+/* line 154, quant_mongorouter.scss */
 .reveal-modal h1 {
   color: #383737;
   font-size: 20px;
 }
 
-/* line 161, quant_mongorouter.scss */
+/* line 160, quant_mongorouter.scss */
 .button.success, .button.alert, .button.secondary {
   border: none;
 }
 
-/* line 167, quant_mongorouter.scss */
+/* line 166, quant_mongorouter.scss */
 table#repository thead {
   background: -webkit-gradient(linear, left top, left bottom, from(#454545), to(#565656));
   background: -moz-linear-gradient(top, #454545, #565656);
@@ -110,16 +106,31 @@ table#repository thead {
   font-weight: bold;
   border: none;
 }
-/* line 173, quant_mongorouter.scss */
+/* line 172, quant_mongorouter.scss */
 table#repository thead tr, table#repository thead td {
   height: 40px;
 }
-/* line 177, quant_mongorouter.scss */
+/* line 176, quant_mongorouter.scss */
 table#repository thead td {
   padding: 5px;
 }
 
-/* line 183, quant_mongorouter.scss */
+/* line 184, quant_mongorouter.scss */
+td.active .true, td.active a {
+  font-size: 9px;
+  color: #505050;
+}
+/* line 193, quant_mongorouter.scss */
+td.active a:hover {
+  color: #000;
+}
+
+/* line 198, quant_mongorouter.scss */
 .alert-box .informative {
   background: #F89406;
+}
+
+/* line 202, quant_mongorouter.scss */
+#alert_placeholder {
+  height: 30px;
 }

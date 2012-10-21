@@ -106,7 +106,6 @@ h2.subtitle
 }
 nav#main 
 {
-    margin-top:100px;
     ul
     {
         list-style:none;
@@ -122,7 +121,7 @@ table#repository
 {
     width:100%;
     border: none;
-    background: none;
+    background: #fefefe;
     thead tr td
     {
     }
@@ -179,7 +178,27 @@ table#repository
         }
     }
 }
+td.active
+{
+    .true
+    {
+        font-size:9px;
+        color:$light;
+    }
+    a
+    {
+        @extend .true;
+    }
+    a:hover
+    {
+        color:#000;
+    }
+}
 .alert-box .informative
 {
     background:#F89406;
+}
+#alert_placeholder
+{
+    height:30px;
 }

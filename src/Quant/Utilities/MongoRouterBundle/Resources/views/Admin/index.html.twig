@@ -34,7 +34,10 @@ All the database routes
                {%if route.active != 1 and route.active is defined%}
                    <button class="tiny button success activate" data-id="{{route.id}}">Activate</button>
                {%else%}
-                   TRUE
+                   <div class="active"> 
+                    <span class="true">TRUE</span><br>
+                    <a href="#" class="deactivate" data-id="{{route.id}}">Deactivate</a>
+                   </div>
                {%endif%}
            </td>
            <td>
@@ -46,7 +49,7 @@ All the database routes
            <td>
                {{route.destinationController}}
                {{route.destinationAction}}
-               {{route.destinationParameters}}
+               <br/>{{route.destinationParameters}}
            </td>
            <td>
                <button class="tiny button alert delete" data-id="{{route.id}}" >Delete</button>

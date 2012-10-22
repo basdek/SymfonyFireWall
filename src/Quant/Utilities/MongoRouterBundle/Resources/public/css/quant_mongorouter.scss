@@ -188,6 +188,7 @@ td.active
     a
     {
         @extend .true;
+        text-decoration: underline;
     }
     a:hover
     {

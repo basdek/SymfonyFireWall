@@ -120,17 +120,21 @@ td.active .true, td.active a {
   font-size: 9px;
   color: #505050;
 }
-/* line 193, quant_mongorouter.scss */
+/* line 189, quant_mongorouter.scss */
+td.active a {
+  text-decoration: underline;
+}
+/* line 194, quant_mongorouter.scss */
 td.active a:hover {
   color: #000;
 }
 
-/* line 198, quant_mongorouter.scss */
+/* line 199, quant_mongorouter.scss */
 .alert-box .informative {
   background: #F89406;
 }
 
-/* line 202, quant_mongorouter.scss */
+/* line 203, quant_mongorouter.scss */
 #alert_placeholder {
   height: 30px;
 }

@@ -33,10 +33,7 @@
     @TODO: something smart for the url on line 46.
     */
     $(window).load(function(){
-
-
-
-
+        var dspeed = 3000;
         $('button.delete').click(function(){
             $.fn.clean();
             $('#modal_placeholder').append('<div id="deleteModal" class="reveal-modal"><h1>Are you sure?</h1>'
@@ -55,7 +52,7 @@
                   $('tr[data-id="'+id+'"]').remove();
                   $.fn.clean();
                   $('#alert_placeholder').append('<div id="delete-success-'+id+'" class="alert-box six columns">Route deleted.  <a href="" class="close">&times;</a></div>');
-                  $('#delete-success-'+id).fadeOut(2400, function(){
+                  $('#delete-success-'+id).fadeOut(dspeed, function(){
                     $('#delete-success-'+id).remove();
                   })
                 })
@@ -75,17 +72,30 @@
                     url: '/qrouter/route/'+id+'/activate'
                 }).done(function(){
                   $('#activateModal').trigger('reveal:close');
-                  $('tr[data-id="'+id+'"] button.activate').remove();
-                  $('tr[data-id="'+id+'"] td.active').append('TRUE');
+                  $('tr[data-id="'+id+'"] button.activate').hide();
                   $.fn.clean();
-                  $('#alert_placeholder').append('<div id="activate-success-'+id+'" class="alert-box six columns">Route activated succesfully.<a href="" class="close">&times;</a></div>')
-                  $('#activate-success-'+id).fadeOut(2400, function(){
+                  $('#alert_placeholder').append('<div id="activate-success-'+id+'" class="alert-box six columns">Route activated successfully.<a href="" class="close">&times;</a></div>')
+                  $('#activate-success-'+id).fadeOut(dspeed, function(){
                     $('#activate-success-'+id).remove();
                   })
                 })
             })
         })
 
+        $('a.deactivate').click(function(id){
+          $.fn.clean();
+          id = $(this).data('id');
+          $.ajax({
+            url: '/qrouter/route/'+id+'/deactivate'
+          }).done(function(){
+            $('#alert_placeholder').append('<div id="deactivate-success-'+id+'" class="alert-box six columns">Route deactivated successfully. <a href="" class="close">&times;</a></div>')
+            $('#deactivate-success-'+id).fadeOut(dspeed, function(){
+              $('#deactivate-success-'+id).remove();
+            })
+            $('tr[data-id="'+id+'"] div.active').hide();
+            $('tr[data-id="'+id+'"] button.activate').show();
+          })
+        })
         
 
         $.fn.clean = function()

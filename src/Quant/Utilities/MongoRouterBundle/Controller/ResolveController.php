@@ -15,21 +15,45 @@ class ResolveController extends Controller
     {
         $em = $this->get('doctrine_mongodb')->getManager();
         $q = $em->createQueryBuilder('QuantUtilitiesMongoRouterBundle:Route');
-        $q->field('active')->notEqual('NO');
+        $q->field('active')->equals(true);
         $q->sort('priority', 'ASC');
 
         $this->available_database_routes = $q->getQuery()->execute();
-
-        foreach ($this->available_database_routes as $r)
+        var_dump(count($this->available_database_routes));
+        foreach ($this->available_database_routes as $k => $r)
         {
-            preg_match_all('#.\{(\w+)\}#', $r->getPattern(), $matches, PREG_OFFSET_CAPTURE | PREG_SET_ORDER);
-            var_dump($matches); 
-            if (false === strpos($r->getPatternSmart(), $path))
+            /*
+            Workflow idea:
+            - check for a direct match
+            - if existent, resolve
+            - if not sanitize
+            - if sanitized and resolvable, resolve (a.k.a. if the request was i.e. /bach/1054/show and it is
+            resolvable since the number is now interpretable as a variable)
+            else: throw 404
+            */
+           var_dump($r->getPattern());
+           if (false === strpos($r->getPattern(), $path))
+           {
+               if(true === strpos($r->getPattern(), '{'))
+               {
+                    // apparently: things need to be sanitized:
+                    preg_match_all('#.\{(\w+)\}#', $r->getPattern(), $matches, PREG_OFFSET_CAPTURE | PREG_SET_ORDER);
+                    /*
+                    A quick note on this one too:
+                    this gives us the place where the variables are in the patterns, thus we can easily replace them,
+                    or write a compare code, in order to be able to check up if there is a match.
+                    */
+                    var_dump($matches);
+               }
+               /*
+               @TODO:
+               logger!
+               */
+            } 
+            else
             {
-                continue;
-            } else
-            {
-                print 'Match';
+                // we have found a match. 
+                
             }
         }
     }

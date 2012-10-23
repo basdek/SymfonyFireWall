@@ -170,10 +170,15 @@ table#repository
         border: none;
         tr, td
         {
+            @include gradient(#454545,#565656);
+            
             height:40px;
         }
         td
+        
         {
+            @include gradient(#454545,#565656);
+            
             padding:5px;
         }
     }
@@ -201,5 +206,5 @@ td.active
 }
 #alert_placeholder
 {
-    height:30px;
+    height:36px;
 }

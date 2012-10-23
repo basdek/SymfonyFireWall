@@ -52,7 +52,17 @@ class Route
     {
         return $this->pattern;
     }
-
+    
+    /**
+     * Get slashcount
+     * 
+     * @return int $num_slashes 
+     */
+    public function getSlashCount()
+    {
+        return substr_count($this->pattern, '/');
+    }
+    
     /**
      * Set destinationParameters
      *

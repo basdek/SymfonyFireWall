@@ -100,7 +100,7 @@ class AdminController extends Controller
             $dm->flush();
             $answer = 'Success';
         }
-        $response = Response(json_encode(array('answer' => $answer)));
+        $response = new Response(json_encode(array('answer' => $answer)));
         $response->headers->set('Content-Type', 'application/json');
         return $response;
     }

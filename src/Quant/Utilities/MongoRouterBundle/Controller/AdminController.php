@@ -42,7 +42,7 @@ class AdminController extends Controller
         $form = $this->createForm(new RouteType, $route);
         return $this->render('QuantUtilitiesMongoRouterBundle:Admin:add.html.twig', array('form' => $form->createView()));
     }
-
+    
     public function createRouteAction()
     {
         $dm = $this->get('doctrine_mongodb')->getManager();
@@ -56,7 +56,14 @@ class AdminController extends Controller
         }
         return $this->redirect($this->generateUrl('QuantUtilitiesMongoRouterBundle_admin_index'));
     }
-
+    public function editRouteAction($id)
+    {
+        
+    }
+    public function updateRouteAction($id)
+    {
+        
+    }
     public function deleteRouteAction($id)
     {
         /*
@@ -103,5 +110,9 @@ class AdminController extends Controller
         $response = new Response(json_encode(array('answer' => $answer)));
         $response->headers->set('Content-Type', 'application/json');
         return $response;
+    }
+    protected function getAllControllersAndActions()
+    {
+        
     }
 }

@@ -68,10 +68,31 @@
  
   
     
-## Tomorows plans / logs / links / fixes
+## Tomorows plans / logs / links / fixes 
+
+### 25 oct 2012
+
+- Get all the Bundles:
+
+	````
+$this->container->getParameter('kernel.bundles');
+````
+
+- Make the form for creating more advanced (*more handcoded too…*), with specification and ajax to switch from auto to non automatic providen Controllers, Namespaces and their actions
+
+#### Caching of results, or namespaces, or other data
+- Filecache, memcache!
+[**WinzouCacheBundle**](https://github.com/winzou/CacheBundle)
+	 - Maybe store namespaces that are available in the database as an alternative
+
 ### 24 oct 2012
 
-***
+#### Idea in the morning
+- Dynamic Controllers and Actions in dropdown
+	- Simple value of dropdown > db
+	- Option to write routes for non existent Actions to (*if you want to write the routes before the actions.*)
+	
+Everything postponed to tomorrow.
 
 ### 23 oct 2012
 - Fix for bug no 2 is visually okay, yet functional it is not yet what it should be.

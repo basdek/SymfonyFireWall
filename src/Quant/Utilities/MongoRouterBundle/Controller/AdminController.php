@@ -33,6 +33,10 @@ class AdminController extends Controller
         $routes = $dm->createQueryBuilder('QuantUtilitiesMongoRouterBundle:Route');
         $routes->sort('active', 'DESC');
         $routes->sort('priority', 'ASC');
+
+        //@REMOVE:
+        $this->getAllControllersAndActions();
+
         return $this->render('QuantUtilitiesMongoRouterBundle:Admin:index.html.twig', array('routes' => $routes->getQuery()->execute()));
     }
 
@@ -42,7 +46,7 @@ class AdminController extends Controller
         $form = $this->createForm(new RouteType, $route);
         return $this->render('QuantUtilitiesMongoRouterBundle:Admin:add.html.twig', array('form' => $form->createView()));
     }
-    
+
     public function createRouteAction()
     {
         $dm = $this->get('doctrine_mongodb')->getManager();
@@ -56,14 +60,17 @@ class AdminController extends Controller
         }
         return $this->redirect($this->generateUrl('QuantUtilitiesMongoRouterBundle_admin_index'));
     }
+
     public function editRouteAction($id)
     {
         
     }
+
     public function updateRouteAction($id)
     {
         
     }
+
     public function deleteRouteAction($id)
     {
         /*
@@ -87,12 +94,14 @@ class AdminController extends Controller
 
     public function activateRouteAction($id)
     {
-       return $this->changeActive($id, true);
+        return $this->changeActive($id, true);
     }
+
     public function deactivateRouteAction($id)
     {
-       return $this->changeActive($id, false);
+        return $this->changeActive($id, false);
     }
+
     protected function changeActive($id, $active)
     {
         $dm = $this->get('doctrine_mongodb')->getManager();
@@ -111,8 +120,38 @@ class AdminController extends Controller
         $response->headers->set('Content-Type', 'application/json');
         return $response;
     }
+
     protected function getAllControllersAndActions()
     {
-        
+        $bundles = $this->container->getParameter('kernel.bundles');
+        /*
+         * @TODO: CLEAN THIS MESS!
+         */
+        $notRoutable = array(
+            'FrameworkBundle',
+            'SecurityBundle',
+            'TwigBundle',
+            'MonologBundle',
+            'SwiftmailerBundle',
+            'AsseticBundle',
+            'DoctrineBundle',
+            'SensioFrameworkExtraBundle',
+            'JMSAopBundle',
+            'JMSDiExtraBundle',
+            'JMSSecurityExtraBundle',
+            'DoctrineMongoDBBundle',
+            'AcmeStoreBundle');
+        foreach($bundles as $bundle)
+        {
+            if(!in_array($notRoutable, $bundle))
+            {
+                
+            }
+            else 
+            {
+                unset('');
+            }
+        }
     }
+
 }
